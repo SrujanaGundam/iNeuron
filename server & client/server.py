@@ -5,30 +5,34 @@ import util
 app=Flask(__name__)
 app.debug = True
 
-@app.route('/traffic_predictor',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def traffic_volume():  #for UI
-    print("in")
-    holiday=request.form['holiday']
-    temperature=float(request.form['temperature'])
-    clouds=float(request.form['clouds'])
-    weather=request.form['weather']
+    #print("in")
+    if request.method == "POST":
+        holiday=request.form.get("holiday")
+        temperature=float(request.form.get("temperature"))
+        clouds=float(request.form.get("clouds"))
+        weather=request.form.get("weather")
 
-    time=request.form['time']
-    date=request.form['date']
-    
-    response={
-    'estimated_traffic':util.get_estimated_traffic(holiday,weather,time,date,temperature,clouds)
-    }
-    # response.headers.add('Access-Control-Allow-Origin', '*')
-    print(type(response))
-    return jsonify(response)
+        time=request.form.get("time")
+        date=request.form.get("date")
 
-@app.route("/",methods=["GET"])
-def home():
+        response=util.get_estimated_traffic(holiday,weather,time,date,temperature,clouds)
+
+        #print(type(response))
+
+        return "Estimated Traffic is: "+ str(response[0])
     return render_template('index.html')
+    # response.headers.add('Access-Control-Allow-Origin', '*')
+    #print(type(response))
+    #return jsonify(response)
+
+''''@app.route("/",methods=["GET"])
+def home():
+    return render_template('index.html')'''
 
 
 if __name__=="__main__":
-    print("Starting Server fpr model")
+    print("Starting Server for model")
     util.load_artifacts() #loading model imp
     app.run(port=5000)

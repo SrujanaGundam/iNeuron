@@ -21,11 +21,11 @@ def get_estimated_traffic(holiday,weather,time,date,temp,clouds):
 
   #date
   # year,month,date=[int(x) for x in date.split('-')]
-  year=int(date.split('-')[0])
+  year=int(date.split('-')[2])
   yr1=year
   month=int(date.split('-')[1])
   m1=month
-  date=int(date.split('-')[2])
+  date=int(date.split('-')[0])
   d1=date
   month_in=[0]*12
   month_in[month-1]=1
@@ -39,7 +39,7 @@ def get_estimated_traffic(holiday,weather,time,date,temp,clouds):
   date1=datetime.date(yr1,m1,d1)
   week=date1.weekday()
   #week=convert.weekday()
-  print(week)
+  #print(week)
   week_in=[0]*7
   week_in[week]=1
 
@@ -81,5 +81,5 @@ def load_artifacts():  #opening the folder to acces model
 
 if __name__=='__main__':
     load_artifacts()
-    print(get_estimated_traffic('Yes','Fog','12:00','2013-05-2',288.6,50)[0])
-    print(get_estimated_traffic('No', 'Mist', '2:00', '2014-06-12', 277.6,45)[0])
+    #print(get_estimated_traffic('Yes','Fog','12:00','2-02-2013',288.6,50)[0])
+    #print(type(get_estimated_traffic('No', 'Mist', '2:00', '2014-06-12', 277.6,45)))

@@ -6,99 +6,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src ="app.js"></script>
     <title>Document</title>
+    <script type="text/javascript" src="main.js"></script>
 </head>
 
 <body>
     <h1 class="flex justify-center pt-6 text-5xl">Metro Interstate Traffic Prediction </h1>
-    <div class="grid grid-cols-2 gap-4 pt-16">
-        <div class="flex gap-10 col-span-1 justify-center pb-16">
-            <label class="text-xl">Holiday</label>
-            <select
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
-                name="holiday" id="holiday">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-        </div>
-
-        <div class="flex gap-10 col-span-1 justify-center pb-16">
-            <label class="text-xl">Date</label>
-            <input
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
-                type="date" name="date" id="date">
-        </div>
-
-        <div class="flex gap-10 col-span-1 justify-center pb-16">
-            <label class="text-xl">Weather</label>
-            <select
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
-                name="holiday" id="holiday">
-                <option value="Clouds'">Clouds</option>
-                <option value="Drizzle">Drizzle</option>
-                <option value="Fog">Fog</option>
-                <option value="Haze">Haze</option>
-                <option value="Mist">Mist</option>
-                <option value="Rain">Rain</option>
-                <option value="Smoke">Smoke</option>
-                <option value="Snow">Snow</option>
-                <option value="Sqaull">Sqaull</option>
-                <option value="Thunderstorm">Thunderstorm</option>
-            </select>
-        </div>
-
-        <div class="flex gap-5 col-span-1 justify-center pb-16">
-            <div class="flex flex-col">
-                <label>Temperature</label>
-                <p>(Kelvin)</p>
+    <form action="{{ url_for('traffic_volume')}}" method="POST">
+        <div class="grid grid-cols-2 gap-4 pt-16">
+            <div class="flex gap-10 col-span-1 justify-center pb-16">
+                <label class="text-xl">Holiday</label>
+                <select id="uiHoliday"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
+                    name="holiday" >
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
             </div>
-            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5">
-        </div>
 
-        <div class="flex gap-10 col-span-1 justify-center pb-16">
-            <label class="text-xl">Time</label>
-            <select
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
-                name="holiday" id="holiday">
-                <option value="00:00">00:00</option>
-                <option value="01:00">01:00</option>
-                <option value="02:00">02:00</option>
-                <option value="03:00">03:00</option>
-                <option value="04:00">04:00</option>
-                <option value="05:00">05:00</option>
-                <option value="06:00">06:00</option>
-                <option value="07:00">07:00</option>
-                <option value="08:00">08:00</option>
-                <option value="09:00">09:00</option>
-                <option value="10:00">10:00</option>
-                <option value="11:00">11:00</option>
-                <option value="12:00">12:00</option>
-                <option value="13:00">13:00</option>
-                <option value="14:00">14:00</option>
-                <option value="15:00">15:00</option>
-                <option value="16:00">16:00</option>
-                <option value="17:00">17:00</option>
-                <option value="18:00">18:00</option>
-                <option value="19:00">19:00</option>
-                <option value="20:00">20:00</option>
-                <option value="21:00">21:00</option>
-                <option value="22:00">22:00</option>
-                <option value="23:00">23:00</option>
-                <option value="24:00">24:00</option>
-            </select>
-        </div>
-
-        <div class="flex gap-5 col-span-1 justify-center pb-16">
-            <div class="flex flex-col">
-                <label>Clouds(%)</label>
+            <div class="flex gap-10 col-span-1 justify-center pb-16">
+                <label class="text-xl">Date</label>
+                <input id="uiDate"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
+                     name="date" >
             </div>
-            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5">
+
+            <div class="flex gap-10 col-span-1 justify-center pb-16">
+                <label class="text-xl">Weather</label>
+                <select id="uiWeather"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
+                    name="weather" >
+                    <option value="Clouds">Clouds</option>
+                    <option value="Drizzle">Drizzle</option>
+                    <option value="Fog">Fog</option>
+                    <option value="Haze">Haze</option>
+                    <option value="Mist">Mist</option>
+                    <option value="Rain">Rain</option>
+                    <option value="Smoke">Smoke</option>
+                    <option value="Snow">Snow</option>
+                    <option value="Sqaull">Sqaull</option>
+                    <option value="Thunderstorm">Thunderstorm</option>
+                </select>
+            </div>
+
+            <div class="flex gap-5 col-span-1 justify-center pb-16">
+                <div class="flex flex-col">
+                    <label>Temperature</label>
+                    <p>(Kelvin)</p>
+                </div>
+                <input type="text" id="uiTemperature" name="temperature"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5">
+            </div>
+
+            <div class="flex gap-10 col-span-1 justify-center pb-5">
+                <label class="text-xl">Time</label>
+                <select id="uiTime"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5"
+                    name="time" >
+                    <option value="00:00">00:00</option>
+                    <option value="01:00">01:00</option>
+                    <option value="02:00">02:00</option>
+                    <option value="03:00">03:00</option>
+                    <option value="04:00">04:00</option>
+                    <option value="05:00">05:00</option>
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                    <option value="24:00">24:00</option>
+                </select>
+            </div>
+
+            <div class="flex gap-5 col-span-1 justify-center pb-5">
+                <div class="flex flex-col">
+                    <label>Clouds(%)</label>
+                </div>
+                <input type="text" id="uiClouds" name="clouds"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5">
+            </div>
         </div>
-    </div>
-    <div class="flex justify-center">
-        <button class="bg-teal-400 hover:bg-teal-500 text-white text-lg font-bold py-2 px-16 rounded-full focus:outline-none focus:shadow-outline">
-            Predict
-        </button>
+        <div class="flex justify-center">
+            <button
+                class="bg-teal-400 hover:bg-teal-500 text-white text-lg font-bold py-2 px-16 rounded-full focus:outline-none focus:shadow-outline">
+                Predict
+            </button>
+        </div>
+    </form>
+
+    
 </body>
 
 </html>
