@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 
 ### Directory Tree
-  
+```  
 ├── server and client<br />
     └── artifacts <br/>
          └──weather.json <br/>
@@ -45,7 +45,7 @@ pip install -r requirements.txt
 ├── README.md <br />
 └── requirements.txt <br />
 └── Architecture.jpg <br />
-
+```
   
  ### Technologies Used
   
