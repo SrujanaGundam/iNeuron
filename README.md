@@ -19,27 +19,42 @@ Technical Aspect
   a. Build the web app using Flask API , HTML & CSS<br />
   b. Upload the project on GitHub <br />
   
-├── templates <br />
-│   └── home.html
-├── app.py <br />
-├── First.csv <br />
-├── Final.ipynb <br />
-├── final.pkl <br />
-├── Procfile <br />
-├── README.md <br />
+  
+Installation
+
+The Code is written in Python 3.7. To install the required packages and libraries, run this command in the project directory after cloning the repository:
+
+'''
+pip install -r requirements.txt
+'''
+
+
+Directory Tree
+  
+├── server and client<br />
+    └── artifacts <br/>
+         └──weather.json <br/>
+    └──templates <br/>
+         └──index.html <br/>
+    └──server.py <br/>
+    └──util.py <br/>
 ├── HLD document <br />
 ├── LLD Document <br />
 ├── Detailed Description Presentation <br />
-├── log file <br />
-├── wireframe pdf <br />
+├── wireframe.jpg <br />
 ├── README.md <br />
 └── requirements.txt <br />
 
   
+  Technologies Used
   
   
+![unnamed](https://user-images.githubusercontent.com/76945262/172669981-734680f7-7346-4d09-87bd-1cdd494f7577.png)
 
 
+Team Mates
+
+Aditi Pagey- 
 
 
 
